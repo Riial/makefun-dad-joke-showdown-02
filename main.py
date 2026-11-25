@@ -24,6 +24,12 @@ def main() -> int:
     if not text.strip():
         print("error: joke is only whitespace", file=sys.stderr)
         return 1
+    if "\n" in text:
+        print(
+            "error: joke must be a single line (no newline characters)",
+            file=sys.stderr,
+        )
+        return 1
     if not (MIN_CHARS <= len(text) <= MAX_CHARS):
         print(
             f"error: joke is {len(text)} characters, must be "
